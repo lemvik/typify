@@ -15068,6 +15068,8 @@ pub enum Bind {
         input: BindVariant3Input,
         #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
         name: ::std::option::Option<::std::string::String>,
+        #[serde(flatten)]
+        extra: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
     },
     Variant4 {
         #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
@@ -31284,85 +31286,12 @@ pub struct EncodeEntry {
     pub yc: ::std::option::Option<NumberValue>,
     #[serde(default, skip_serializing_if = "::std::option::Option::is_none")]
     pub zindex: ::std::option::Option<NumberValue>,
+    #[serde(flatten)]
+    pub extra: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
 }
 impl ::std::convert::From<&EncodeEntry> for EncodeEntry {
     fn from(value: &EncodeEntry) -> Self {
         value.clone()
-    }
-}
-impl ::std::default::Default for EncodeEntry {
-    fn default() -> Self {
-        Self {
-            align: Default::default(),
-            angle: Default::default(),
-            aria: Default::default(),
-            aria_role: Default::default(),
-            aria_role_description: Default::default(),
-            aspect: Default::default(),
-            baseline: Default::default(),
-            blend: Default::default(),
-            clip: Default::default(),
-            corner_radius: Default::default(),
-            corner_radius_bottom_left: Default::default(),
-            corner_radius_bottom_right: Default::default(),
-            corner_radius_top_left: Default::default(),
-            corner_radius_top_right: Default::default(),
-            cursor: Default::default(),
-            defined: Default::default(),
-            description: Default::default(),
-            dir: Default::default(),
-            dx: Default::default(),
-            dy: Default::default(),
-            ellipsis: Default::default(),
-            end_angle: Default::default(),
-            fill: Default::default(),
-            fill_opacity: Default::default(),
-            font: Default::default(),
-            font_size: Default::default(),
-            font_style: Default::default(),
-            font_weight: Default::default(),
-            height: Default::default(),
-            inner_radius: Default::default(),
-            interpolate: Default::default(),
-            limit: Default::default(),
-            line_break: Default::default(),
-            line_height: Default::default(),
-            opacity: Default::default(),
-            orient: Default::default(),
-            outer_radius: Default::default(),
-            pad_angle: Default::default(),
-            path: Default::default(),
-            radius: Default::default(),
-            scale_x: Default::default(),
-            scale_y: Default::default(),
-            shape: Default::default(),
-            size: Default::default(),
-            smooth: Default::default(),
-            start_angle: Default::default(),
-            stroke: Default::default(),
-            stroke_cap: Default::default(),
-            stroke_dash: Default::default(),
-            stroke_dash_offset: Default::default(),
-            stroke_foreground: Default::default(),
-            stroke_join: Default::default(),
-            stroke_miter_limit: Default::default(),
-            stroke_offset: Default::default(),
-            stroke_opacity: Default::default(),
-            stroke_width: Default::default(),
-            tension: Default::default(),
-            text: Default::default(),
-            theta: Default::default(),
-            tooltip: Default::default(),
-            url: Default::default(),
-            width: Default::default(),
-            x: Default::default(),
-            x2: Default::default(),
-            xc: Default::default(),
-            y: Default::default(),
-            y2: Default::default(),
-            yc: Default::default(),
-            zindex: Default::default(),
-        }
     }
 }
 #[doc = "`EncodeKey`"]
@@ -81622,6 +81551,8 @@ pub struct Projection {
         skip_serializing_if = "::std::option::Option::is_none"
     )]
     pub type_: ::std::option::Option<StringOrSignal>,
+    #[serde(flatten)]
+    pub extra: ::serde_json::Map<::std::string::String, ::serde_json::Value>,
 }
 impl ::std::convert::From<&Projection> for Projection {
     fn from(value: &Projection) -> Self {

@@ -104,6 +104,22 @@ impl TypeSpace {
                         })
                 ) =>
             {
+                let sub_type_name = type_name.as_ref().map(|base| format!("{}_extra", base));
+                let map_type = self.make_map(
+                    sub_type_name,
+                    &validation.property_names,
+                    &None
+                )?;
+                let map_type_id = self.assign_type(map_type);
+                let extra_prop = StructProperty {
+                    name: "extra".to_string(),
+                    rename: StructPropertyRename::Flatten,
+                    state: StructPropertyState::Required,
+                    description: None,
+                    type_id: map_type_id,
+                };
+
+                properties.push(extra_prop);
                 false
             }
 
